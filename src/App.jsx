@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="app-container">
       <header className="header">
-        <h1>우리의 결혼식에 초대합니다</h1>
+        <h1>돼-지꽃사슴</h1>
         <p>2025년 12월 31일, 서울 특별시</p>
       </header>
 
