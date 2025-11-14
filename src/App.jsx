@@ -15,7 +15,7 @@ function App() {
       </section>
 
       <section className="schedule">
-        <h2>행사 일정</h2>
+        <h2>행사 일정은 2026년 2월 28일 입니당 우리 결혼기념일과 같습니다~</h2>
         <ul>
           <li>오후 1시: 예식 시작</li>
           <li>오후 3시: 피로연</li>
@@ -23,8 +23,8 @@ function App() {
       </section>
 
       <footer className="footer">
-        <p>많은 참석 부탁드립니다.</p>
-        <p>문의: 010-1234-5678</p>
+        <p>많은 참석 해주십셔.......</p>
+        <p>문의: 010-999888-97089708</p>
       </footer>
     </div>
   );
