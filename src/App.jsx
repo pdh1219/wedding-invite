@@ -8,11 +8,11 @@ function App() {
       {/* --- 커버 이미지 --- */}
       <section className="cover">
         <img 
-          src="/images/0503.jpg" 
+          src="./images/01.jpg" 
           alt="wedding" 
           className="cover-img" 
         />
-        <h1 className="title">김성윤 & 박대희</h1>
+        <h1 className="title">김성윤 & ㅜㅜ박대희</h1>
         <p className="subtitle">결혼식에 초대합니다</p>
       </section>
 
