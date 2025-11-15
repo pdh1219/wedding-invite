@@ -1,46 +1,105 @@
-.app-container {
-  max-width: 480px;
-  margin: 20px auto;
-  padding: 20px;
-  font-family: 'Noto Sans KR', sans-serif;
-  background-color: #fff8f0;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+body {
+  margin: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  background: #fffaf8;
   color: #333;
 }
 
-.header {
+.center-box {
+  display: flex;
+  justify-content: center; /* 가로 중앙 */
+  align-items: center;     /* 세로 중앙 */
+  
+  height: 100vh;           /* 화면 전체 높이 */
+}
+
+.imageSize {
+  width: 200px;
+  height: auto;   /* 비율 유지하면서 줄이기 */
+}
+
+.container {
+  max-width: 480px;
+  margin: auto;
+  padding-bottom: 50px;
+}
+
+section {
+  margin: 40px 20px;
   text-align: center;
-  border-bottom: 2px solid #f2c1a0;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
 }
 
-.header h1 {
-  font-size: 1.8rem;
-  color: #a05a2c;
+/* --- 커버 --- */
+.cover {
+  position: relative;
 }
 
-.details, .schedule {
-  margin-bottom: 20px;
+.cover-img {
+  width: 100%;
+  border-radius: 0 0 20px 20px;
 }
 
-.details h2, .schedule h2 {
-  color: #d47c3c;
-  margin-bottom: 8px;
+.title {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
 }
 
-.schedule ul {
-  list-style-type: none;
-  padding-left: 0;
+.subtitle {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  font-size: 1rem;
+  color: white;
 }
 
-.schedule li {
-  margin-bottom: 6px;
+/* 인사말 */
+.greeting p {
+  line-height: 1.7;
 }
 
-.footer {
+/* 일정 */
+.info-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.date {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* 갤러리 */
+.photo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+}
+
+.photo-grid img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* 계좌 */
+details {
+  background: #fff;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+}
+
+footer {
   text-align: center;
-  font-size: 0.9rem;
-  color: #a05a2c;
+  margin-top: 50px;
+  padding: 20px 0;
+  color: #aaa;
+  font-size: 0.8rem;
 }

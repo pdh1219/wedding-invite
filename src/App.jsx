@@ -3,14 +3,14 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="container">
+    <div className="container center-box">
 
       {/* --- 커버 이미지 --- */}
       <section className="cover">
         <img 
           src="./images/01.jpg" 
           alt="wedding" 
-          className="cover-img" 
+          className="cover-img imageSize" 
         />
         <h1 className="title">김성윤 & ㅜㅜ박대희</h1>
         <p className="subtitle">결혼식에 초대합니다</p>
@@ -55,9 +55,9 @@ function App() {
       <section className="gallery">
         <h2>GALLERY</h2>
         <div className="photo-grid">
-          <img src="/images/0503.jpg" alt="gallery1" />
-          <img src="/images/0503.jpg" alt="gallery2" />
-          <img src="/images/0503.jpg" alt="gallery3" />
+          <img src="./images/01.jpg" alt="gallery1" />
+          <img src="./images/01.jpg" alt="gallery2" />
+          <img src="./images/01.jpg" alt="gallery3" />
         </div>
       </section>
 
