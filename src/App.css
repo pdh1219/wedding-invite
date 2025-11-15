@@ -10,7 +10,7 @@ body {
   justify-content: center; /* 가로 중앙 */
   align-items: center;     /* 세로 중앙 */
   
-  height: 100vh;           /* 화면 전체 높이 */
+  height: 500vh;           /* 화면 전체 높이 */
 }
 
 .imageSize {
