@@ -7,12 +7,21 @@ function MessagePayment() {
   ];
 
   const [visible, setVisible] = useState({ groom: false, bride: false });
+  const [copied, setCopied] = useState(""); // 최근 복사한 계좌 표시
 
   const toggleAccount = (type) => {
     setVisible(prev => ({
       ...prev,
       [type]: !prev[type]
     }));
+  };
+
+  // 계좌 복사 함수
+  const copyToClipboard = (account) => {
+    navigator.clipboard.writeText(account).then(() => {
+      setCopied(account);
+      setTimeout(() => setCopied(""), 2000); // 2초 후 메시지 사라짐
+    });
   };
 
   return (
@@ -30,8 +39,8 @@ function MessagePayment() {
           <button
             onClick={() => toggleAccount("groom")}
             style={{
-              width: "160px",       // 고정 너비
-              height: "50px",       // 고정 높이
+              width: "160px",
+              height: "50px",
               borderRadius: "5px",
               border: "none",
               backgroundColor: "#000",
@@ -50,8 +59,10 @@ function MessagePayment() {
                 borderRadius: "10px",
                 backgroundColor: "#fff4e6",
                 boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
-                color: "#000"
+                color: "#000",
+                cursor: "pointer"
               }}
+              onClick={() => copyToClipboard(accounts[0].account)}
             >
               <strong>{accounts[0].side}</strong>
               <p>{accounts[0].bank}<br/>{accounts[0].account}</p>
@@ -65,8 +76,8 @@ function MessagePayment() {
           <button
             onClick={() => toggleAccount("bride")}
             style={{
-              width: "160px",       // 고정 너비
-              height: "50px",       // 고정 높이
+              width: "160px",
+              height: "50px",
               borderRadius: "5px",
               border: "none",
               backgroundColor: "#000",
@@ -85,8 +96,10 @@ function MessagePayment() {
                 borderRadius: "10px",
                 backgroundColor: "#fff4e6",
                 boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
-                color: "#000"
+                color: "#000",
+                cursor: "pointer"
               }}
+              onClick={() => copyToClipboard(accounts[1].account)}
             >
               <strong>{accounts[1].side}</strong>
               <p>{accounts[1].bank}<br/>{accounts[1].account}</p>
@@ -95,6 +108,24 @@ function MessagePayment() {
           )}
         </div>
       </div>
+
+      {/* 복사 알림 */}
+      {copied && (
+        <div style={{
+          position: "fixed",
+          bottom: "20px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          backgroundColor: "#000",
+          color: "#fff",
+          padding: "10px 20px",
+          borderRadius: "20px",
+          boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
+          fontSize: "14px"
+        }}>
+          {copied} 계좌가 복사되었습니다!
+        </div>
+      )}
     </div>
   );
 }

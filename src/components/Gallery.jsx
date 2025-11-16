@@ -1,73 +1,58 @@
 import React, { useState } from "react";
 
-const allImages = Array.from({ length: 25 }, (_, i) => `./images/${(i + 2).toString().padStart(2, "0")}.jpg`);
+const allImages = Array.from(
+  { length: 25 },
+  (_, i) => `./images/${(i + 2).toString().padStart(2, "0")}.jpg`
+);
 
 function Gallery() {
-  const [visibleCount, setVisibleCount] = useState(3); // 처음 3개만 보이기
+  const [showAll, setShowAll] = useState(false); // 전체 보기 on/off
   const [previewSrc, setPreviewSrc] = useState(null);
 
+  const visibleCount = showAll ? allImages.length : 9; // 9개 또는 전체
   const imagesToShow = allImages.slice(0, visibleCount);
 
   const openPreview = (src) => setPreviewSrc(src);
   const closePreview = () => setPreviewSrc(null);
 
-  const handleLoadMore = () => {
-    setVisibleCount(prev => Math.min(prev + 3, allImages.length));
-  };
-
-  const handleCollapse = () => {
-    setVisibleCount(3);
-  };
+  const toggleShowAll = () => setShowAll(prev => !prev); // on/off 토글
 
   return (
     <div style={{ padding: "20px" }}>
       <h3 style={{ color: "#000" }}>갤러리</h3>
-      <div style={{
-        display: "flex",
-        gap: "5px",
-        flexWrap: "wrap"
-      }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: "5px",
+        }}
+      >
         {imagesToShow.map((src, idx) => (
           <img
             key={idx}
             src={src}
             alt={`gallery-${idx}`}
-            style={{ width: "calc(33.333% - 3.33px)", cursor: "pointer", borderRadius: "5px" }}
+            style={{ width: "100%", cursor: "pointer", borderRadius: "5px" }}
             onClick={() => openPreview(src)}
           />
         ))}
       </div>
 
-      <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+      {/* 더보기/접기 버튼 */}
+      <div style={{ marginTop: "10px" }}>
         <button
-          onClick={handleLoadMore}
-          disabled={visibleCount >= allImages.length}
+          onClick={toggleShowAll}
           style={{
-            flex: 1,
-            padding: "10px",
-            backgroundColor: visibleCount >= allImages.length ? "#ccc" : "#000",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            cursor: visibleCount >= allImages.length ? "default" : "pointer"
-          }}
-        >
-          더보기
-        </button>
-
-        <button
-          onClick={handleCollapse}
-          style={{
-            flex: 1,
+            width: "100%",
             padding: "10px",
             backgroundColor: "#000",
             color: "#fff",
             border: "none",
             borderRadius: "5px",
-            cursor: "pointer"
+            cursor: "pointer",
           }}
         >
-          접기
+          {showAll ? "접기" : "더보기"}
         </button>
       </div>
 
@@ -87,7 +72,7 @@ function Gallery() {
             justifyContent: "center",
             alignItems: "center",
             zIndex: 999,
-            cursor: "pointer"
+            cursor: "pointer",
           }}
         >
           <img
