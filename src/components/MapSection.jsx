@@ -69,7 +69,7 @@ function MapSection() {
 
   return (
     <div className="section">
-      <h3>오시는 길</h3>
+      <h3 style={{ color: "#7B5E57" }}>오시는 길</h3>
       <div
         id="map"
         style={{

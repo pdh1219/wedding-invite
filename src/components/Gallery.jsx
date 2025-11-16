@@ -42,15 +42,7 @@ function Gallery() {
       <div style={{ marginTop: "10px" }}>
         <button
           onClick={toggleShowAll}
-          style={{
-            width: "100%",
-            padding: "10px",
-            backgroundColor: "#000",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
+          className="gallery-button" // 클래스 추가
         >
           {showAll ? "접기" : "더보기"}
         </button>
