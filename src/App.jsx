@@ -1,24 +1,19 @@
 import React from "react";
-import "./App.css";
-
-import Header from "./components/Header";
-import Greeting from "./components/Greeting";
+import Hero from "./components/Hero";
+import Couple from "./components/Couple";
 import Schedule from "./components/Schedule";
+import Location from "./components/Location";
 import Gallery from "./components/Gallery";
-import Payment from "./components/Payment";
-import MapSection from "./components/MapSection";
-import Share from "./components/Share";
+import "./App.css";
 
 function App() {
   return (
     <div>
-      <Header />
-      <Greeting />
+      <Hero />
+      <Couple />
       <Schedule />
+      <Location />
       <Gallery />
-      <Payment />
-      <MapSection />
-      <Share />
     </div>
   );
 }
