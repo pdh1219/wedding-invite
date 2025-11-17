@@ -1,49 +1,51 @@
 import React, { useEffect } from "react";
 
-
-function ShareButton() {
+function Share() {
   useEffect(() => {
-    if (window.Kakao && !window.Kakao.isInitialized()) {
-      window.Kakao.init("개발자_키"); // 카카오 JS 키
+    if (!window.Kakao) {
+      const script = document.createElement("script");
+      script.src = "https://t1.kakaocdn.net/kakao_js_sdk/2.5.0/kakao.min.js";
+      script.async = true;
+      script.onload = () => {
+        window.Kakao.init("개발자_키");
+      };
+      document.head.appendChild(script);
+    } else {
+      window.Kakao.init("개발자_키");
     }
   }, []);
 
   const shareKakao = () => {
-    if (window.Kakao) {
-      window.Kakao.Link.sendDefault({
-        objectType: "feed",
-        content: {
-          title: "저희 결혼합니다!",
-          description: "함께 축복해주시면 감사하겠습니다.",
-          imageUrl: "https://yourdomain.com/images/01.jpg",
+    if (!window.Kakao) return;
+
+    window.Kakao.Share.sendDefault({
+      objectType: "feed",
+      content: {
+        title: "우리 결혼합니다",
+        description: "예식에 초대합니다.",
+        imageUrl: "https://your-image-url",
+        link: {
+          mobileWebUrl: "https://your-site-url",
+          webUrl: "https://your-site-url",
+        },
+      },
+      buttons: [
+        {
+          title: "청첩장 보기",
           link: {
-            mobileWebUrl: window.location.href,
-            webUrl: window.location.href,
+            mobileWebUrl: "https://your-site-url",
+            webUrl: "https://your-site-url",
           },
         },
-        buttons: [
-          {
-            title: "청첩장 보기",
-            link: {
-              mobileWebUrl: window.location.href,
-              webUrl: window.location.href,
-            },
-          },
-        ],
-      });
-    }
+      ],
+    });
   };
 
   return (
     <div className="section">
-      <button
-        className="message-buttons"
-        onClick={shareKakao}
-      >
-        카카오톡으로 공유하기
-      </button>
+      <button onClick={shareKakao}>카카오톡으로 공유하기</button>
     </div>
   );
 }
 
-export default ShareButton;
+export default Share;
