@@ -3,7 +3,7 @@ import React from "react";
 function Greeting() {
   return (
     <div className="section">
-      <img src="/images/greeting.jpg" alt="인삿말" />
+      {/*<img src="./images/greeting.png" alt="인삿말" />*/}
     </div>
   );
 }

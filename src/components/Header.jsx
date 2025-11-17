@@ -2,13 +2,13 @@ import React from "react";
 
 function Header() {
   return (
-    <div className="section">
-      {/* 시간 및 장소 3장 사진 */}
-      <div style={{ display: "flex", gap: "5px", marginTop: "10px" }}>
-        <img src="./images/info1.jpg" alt="정보1" />
-        <img src="./images/14.jpg" alt="정보2" />
-        <img src="./images/info3.jpg" alt="정보3" />
-      </div>
+    <div className="section header-section">
+      <img
+        src="./images/header.png"
+        alt="헤더 이미지"
+        className="header-original-image"
+      />
+      <img src="./images/greeting.png" alt="인삿말" />
     </div>
   );
 }
