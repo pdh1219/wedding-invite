@@ -1,11 +1,11 @@
 import React from "react";
 
-function Schedule() {
+export default function Schedule() {
   return (
-    <div className="section">
-      <img src="./images/schedule.png" alt="예식 일정" />
-    </div>
+    <section className="section-card">
+      <h2 className="section-title">결혼식 안내</h2>
+      <p>📅 2025년 5월 10일 (토) 오후 2시</p>
+      <p>📍 서울 예식홀 3층</p>
+    </section>
   );
 }
-
-export default Schedule;
