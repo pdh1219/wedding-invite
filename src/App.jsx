@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Gallery from './components/Gallery';
 
 function Calendar2026Feb() {
   const year = 2026;
@@ -38,7 +39,7 @@ function Calendar2026Feb() {
   return (
     <section className="calendar" aria-label="2026년 2월 달력">
       <h2 className="calendar-title">2026년 2월</h2>
-
+      <br />
       <div className="calendar-grid" aria-hidden="true">
         {["일", "월", "화", "수", "목", "금", "토"].map((d) => (
           <div key={d} className="weekday">{d}</div>
@@ -112,6 +113,10 @@ function App() {
         </section>
 
         <Calendar2026Feb />
+
+        
+        {/* 갤러리 */}
+        <Gallery />
         
       </main>
     </div>
