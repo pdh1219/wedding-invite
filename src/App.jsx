@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import Gallery from './components/Gallery';
+import MapSection from './components/MapSection';
+import Payment from './components/Payment';
 
 function Calendar2026Feb() {
   const year = 2026;
@@ -118,6 +120,10 @@ function App() {
         {/* 갤러리 */}
         <Gallery />
         
+        <Payment />
+
+        <MapSection />   {/* ★ 여기에 배치 완료 */}
+
       </main>
     </div>
   );

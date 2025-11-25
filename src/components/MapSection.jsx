@@ -1,55 +1,55 @@
 import React, { useEffect } from "react";
 
+//91e36f4d5920813845d6ebe0ea0c48f6
+
 function MapSection() {
   useEffect(() => {
-    // -----------------------
-    // 지도 초기화 함수
-    // -----------------------
     const initMap = () => {
-      // kakao 객체와 maps 존재 여부 확인
       if (!window.kakao || !window.kakao.maps) return;
 
       const { kakao } = window;
-
       const container = document.getElementById("map");
       if (!container) return;
 
-      // 목적지 좌표
-      const destination = new kakao.maps.LatLng(37.51406, 127.0373);
+      const lat = 37.51406;
+      const lng = 127.0373;
 
-      // 지도 생성
+      const destination = new kakao.maps.LatLng(lat, lng);
+
       const map = new kakao.maps.Map(container, {
         center: destination,
         level: 5,
       });
 
-      // 확대/축소 컨트롤 추가
       const zoomControl = new kakao.maps.ZoomControl();
       map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-      // 목적지 마커
       const marker = new kakao.maps.Marker({
         map,
         position: destination,
         title: "서울 빌라드지디 논현",
       });
 
-      // 인포윈도우 표시
       const infowindow = new kakao.maps.InfoWindow({
         content: `<div style="padding:5px;">서울 빌라드지디 논현</div>`,
       });
       infowindow.open(map, marker);
+
+      // ----------------------------------
+      // 🟡 지도 더블 클릭 시 카카오맵으로 이동
+      // ----------------------------------
+      kakao.maps.event.addListener(map, "click", function () {
+        window.open(
+          `https://map.kakao.com/link/map/서울 빌라드지디 논현,${lat},${lng}`,
+          "_blank"
+        );
+      });
     };
 
-    // -----------------------
-    // SDK 스크립트 로드
-    // -----------------------
     const loadKakaoMap = () => {
       if (window.kakao && window.kakao.maps) {
-        // 이미 SDK 로드됨
         window.kakao.maps.load(initMap);
       } else {
-        // 스크립트 생성
         const script = document.createElement("script");
         script.id = "kakao-map-sdk";
         script.src =
@@ -68,8 +68,9 @@ function MapSection() {
   }, []);
 
   return (
-    <div className="section">
-      <h3 style={{ color: "#7B5E57" }}>오시는 길</h3>
+    <div className="map-section-wrapper">
+      <h3 className="map-title">오시는 길</h3>
+      <br />
       <div
         id="map"
         style={{
