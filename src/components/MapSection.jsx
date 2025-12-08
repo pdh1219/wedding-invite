@@ -35,14 +35,18 @@ function MapSection() {
       });
       infowindow.open(map, marker);
 
-      // ----------------------------------
-      // 🟡 지도 더블 클릭 시 카카오맵으로 이동
-      // ----------------------------------
+      // 🟡 지도 클릭 시 카카오맵 이동
       kakao.maps.event.addListener(map, "click", function () {
-        window.open(
-          `https://map.kakao.com/link/map/서울 빌라드지디 논현,${lat},${lng}`,
-          "_blank"
+        const goMap = window.confirm(
+          "카카오맵에서 위치를 확인하시겠습니까?"
         );
+
+        if (goMap) {
+          window.open(
+            `https://map.kakao.com/link/map/서울 빌라드지디 논현,${lat},${lng}`,
+            "_blank"
+          );
+        }
       });
     };
 
@@ -55,11 +59,9 @@ function MapSection() {
         script.src =
           "https://dapi.kakao.com/v2/maps/sdk.js?appkey=91e36f4d5920813845d6ebe0ea0c48f6&libraries=services&autoload=false";
         script.async = true;
-
         script.onload = () => {
           window.kakao.maps.load(initMap);
         };
-
         document.head.appendChild(script);
       }
     };
@@ -71,6 +73,7 @@ function MapSection() {
     <div className="map-section-wrapper">
       <h3 className="map-title">오시는 길</h3>
       <br />
+
       <div
         id="map"
         style={{
@@ -79,6 +82,32 @@ function MapSection() {
           borderRadius: "8px",
         }}
       ></div>
+
+      {/* 🟡 여기서부터 ↓ 교통편 안내 섹션 */}
+      <div
+        className="transport-info"
+        style={{
+          marginTop: "16px",
+          padding: "14px",
+          background: "#f9f9f9",
+          borderRadius: "8px",
+          lineHeight: "1.6",
+          fontSize: "14px",
+          color: "#444",
+        }}
+      >
+        <strong style={{ fontSize: "15px" }}>🚇 지하철</strong>
+        <div>· 7호선 논현역 7번 출구 도보 5분</div>
+        <div>· 9호선 신논현역 3번 출구 도보 10분</div>
+
+        <br />
+
+        <strong style={{ fontSize: "15px" }}>🚗 주차안내</strong>
+        <div>· 예식장 내 지하주차장 이용 가능</div>
+        <div>· 주차요원이 안내해드립니다</div>
+        <div>· 간선 : 140, 144, 145</div>
+        <div>· 지선 : 4211, 4312</div>
+      </div>
     </div>
   );
 }
