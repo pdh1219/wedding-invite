@@ -31,7 +31,7 @@ function MapSection() {
       });
 
       const infowindow = new kakao.maps.InfoWindow({
-        content: `<div style="padding:5px;">서울 빌라드지디 논현</div>`,
+        content: `<div style="padding:5px; font-size:14px;">서울 빌라드지디 논현</div>`,
       });
       infowindow.open(map, marker);
 
@@ -71,7 +71,7 @@ function MapSection() {
 
   return (
     <div className="map-section-wrapper">
-      <h3 className="map-title">오시는 길</h3>
+      <h3 className="map-title">오시는 길 안내</h3>
       <br />
 
       <div
@@ -96,17 +96,29 @@ function MapSection() {
           color: "#444",
         }}
       >
-        <strong style={{ fontSize: "15px" }}>🚇 지하철</strong>
-        <div>· 7호선 논현역 7번 출구 도보 5분</div>
-        <div>· 9호선 신논현역 3번 출구 도보 10분</div>
+        <strong style={{ fontSize: "15px" }}>빌라드지디 논현</strong>
+        <div>· 서울 강남구 언주로126길 23 (논현동)</div>
+        <div>· 02-547-3381</div>
 
         <br />
 
-        <strong style={{ fontSize: "15px" }}>🚗 주차안내</strong>
-        <div>· 예식장 내 지하주차장 이용 가능</div>
-        <div>· 주차요원이 안내해드립니다</div>
-        <div>· 간선 : 140, 144, 145</div>
-        <div>· 지선 : 4211, 4312</div>
+        <strong style={{ fontSize: "15px" }}>자가용 이용 시 주차 안내</strong>
+        <div>· 'SK 허브블루' 주차 후 셔틀버스 이용 <br />
+        {"\u00A0\u00A0\u00A0\u00A0"}(SK 허브블루 : 강남구 학동로 342) 
+        </div>
+        <div>· 예식장 앞 발렛파킹 진행</div>
+
+        <br />
+
+        <strong style={{ fontSize: "15px" }}>무료 셔틀버스 운행</strong>
+        <div>· 강남구청역 2번출구 20m 앞 10분 간격 운행</div>
+        <div>· 강남구청역 → 예식장 : 10:30~12:00</div>
+        <div>· 예식장 → 강남구청역 : 12:30~13:30</div>
+
+        <br />
+
+        <div style={{ color: "#800010" }}>※ 장소가 협소한 관계로<br/> 
+        {"\u00A0\u00A0\u00A0\u00A0\u00A0"}축하 화환은 마음만 감사히 받겠습니다.</div>
       </div>
     </div>
   );

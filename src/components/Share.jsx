@@ -27,9 +27,9 @@ function Share() {
     window.Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
-        title: "2026년 2월 28일 결혼합니다 💍",
+        title: "성윤 그리고 대희, 2026년 2월 28일 결혼해요 💍",
         description: "빌라드지디 논현 · AM 11:30",
-        imageUrl: "./images/01.jpg", // 원하는 이미지 URL 입력
+        imageUrl: "https://pdh1219.github.io/wedding-invite/images/18.jpg", // 원하는 이미지 URL 입력
         link: {
           mobileWebUrl: 'https://pdh1219.github.io/wedding-invite/',
           webUrl: 'https://pdh1219.github.io/wedding-invite/',
@@ -51,17 +51,9 @@ function Share() {
     <div className="share-wrapper" style={{ textAlign: "center", margin: "30px 0" }}>
       <button
         onClick={handleShare}
-        style={{
-          padding: "12px 20px",
-          background: "#FEE500",
-          borderRadius: "8px",
-          border: "none",
-          cursor: "pointer",
-          fontSize: "15px",
-          fontWeight: "bold",
-        }}
+        className="toggle-account-btn"
       >
-        📤 카카오톡으로 공유하기
+        카카오톡 공유하기
       </button>
     </div>
   );

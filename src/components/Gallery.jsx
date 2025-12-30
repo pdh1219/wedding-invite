@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const images = [
-  "./images/01.jpg",
   "./images/02.jpg",
   "./images/03.jpg",
   "./images/04.jpg",
@@ -20,41 +19,68 @@ const images = [
   "./images/17.jpg",
   "./images/18.jpg",
   "./images/19.jpg",
-  "./images/20.jpg",
-  "./images/21.jpg",
+  "./images/20.jpg"
 ];
 
 const Gallery = () => {
-  const [expanded, setExpanded] = useState(false);
   const [modalIndex, setModalIndex] = useState(null);
-  const visibleCount = expanded ? images.length : 9;
+  const modalRef = useRef(null);
 
-  const handleToggle = () => setExpanded(prev => !prev);
-  const openModal = (idx) => setModalIndex(idx);
+  const openModal = () => setModalIndex(0);
   const closeModal = () => setModalIndex(null);
+
+  const prevImage = () => {
+    setModalIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const nextImage = () => {
+    setModalIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
 
   return (
     <section className="gallery-section">
       <h2 className="gallery-title">Gallery</h2>
-      <br />
       <div className="gallery-grid">
-        {images.slice(0, visibleCount).map((src, idx) => (
-          <div key={idx} className="gallery-cell" onClick={() => openModal(idx)}>
+        {images.slice(0, 9).map((src, idx) => (
+          <div key={idx} className="gallery-cell">
             <img src={src} alt={`gallery-${idx}`} className="gallery-image" />
           </div>
         ))}
       </div>
 
-      {images.length > 9 && (
-        <button className="gallery-button" onClick={handleToggle}>
-          {expanded ? "접기" : "더보기"}
-        </button>
-      )}
+      <br />
 
-      {/* 모달 상세보기 */}
+      <button className="toggle-account-btn" onClick={openModal}>
+        상세보기
+      </button>
+
       {modalIndex !== null && (
-        <div className="gallery-modal" onClick={closeModal}>
-          <img src={images[modalIndex]} alt={`gallery-${modalIndex}`} className="modal-image" />
+        <div className="modal-overlay" ref={modalRef}>
+          <button className="modal-close-btn" onClick={closeModal}>
+            ✕
+          </button>
+          <button className="modal-prev-btn" onClick={prevImage}>
+            ‹
+          </button>
+          <img
+            src={images[modalIndex]}
+            alt={`modal-${modalIndex}`}
+            className="modal-image"
+          />
+          <button className="modal-next-btn" onClick={nextImage}>
+            ›
+          </button>
+          <div className="modal-thumbnails">
+            {images.map((src, idx) => (
+              <img
+                key={idx}
+                src={src}
+                alt={`thumb-${idx}`}
+                className={`thumbnail ${modalIndex === idx ? "active" : ""}`}
+                onClick={() => setModalIndex(idx)}
+              />
+            ))}
+          </div>
         </div>
       )}
     </section>
@@ -62,3 +88,4 @@ const Gallery = () => {
 };
 
 export default Gallery;
+

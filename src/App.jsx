@@ -75,12 +75,12 @@ function App() {
 
         <section aria-labelledby="date-title">
           <h1 className="date-large" id="date-title">02 / 28</h1>
-          <p className="name">길동 그리고 순신</p>
-          <p className="save-the-date">SAVE THE DATE</p>
+          <p className="name">성윤 그리고 대희</p>
+          <p className="save-the-date">WEDDING DAY</p>
         </section>
 
         <section className="image-box" aria-label="배경 이미지">
-          <img src="./images/14.jpg" alt="웨딩사진 타이틀" />
+          <img src="./images/99.jpg" alt="웨딩사진 타이틀" />
         </section>
 
         <section aria-labelledby="schedule-title">
@@ -105,12 +105,12 @@ function App() {
           
           <div className="family-info">
             <p className="family-line">
-              <span>떙떙떙 · 떙떙떙 의 아들</span>
-              <strong>떙떙떙</strong>
+              <span>김문태 · 조성혜 의 아들</span>
+              <strong>김성윤</strong>
             </p>
             <p className="family-line">
-              <span>떙떙떙 · 떙떙떙 의 딸</span>
-              <strong>떙떙떙</strong>
+              <span>박효영 · 조용호 의 딸</span>
+              <strong>박대희</strong>
             </p>
           </div>
         </section>

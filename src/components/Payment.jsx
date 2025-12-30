@@ -25,19 +25,39 @@ function AccountSection() {
         <div className="account-box fade-account">
           <p className="account-role">신랑측 계좌</p>
           <p className="account-info">
-            <strong>하나은행 123-456789-01-001</strong><br />
-            예금주 : 홍길동
+            <span className="account-row">
+              <strong>하나은행 02913241889</strong>
+              <button
+                className="copy-btn-mini"
+                onClick={() => {
+                  navigator.clipboard.writeText("하나은행 02913241889");
+                  alert("신랑측 계좌번호가 복사되었습니다.");
+                }}
+                aria-label="계좌번호 복사"
+              >
+                복사
+              </button>
+            </span>
+            <br />
+            예금주 : 김문태
           </p>
-
-          <button
-            className="copy-btn"
-            onClick={() => {
-              navigator.clipboard.writeText("하나은행 123-456789-01-001");
-              alert("신랑측 계좌번호가 복사되었습니다.");
-            }}
-          >
-            복사하기
-          </button>
+          <p className="account-info">
+            <span className="account-row">
+              <strong>케이뱅크 100149166673</strong>
+              <button
+                className="copy-btn-mini"
+                onClick={() => {
+                  navigator.clipboard.writeText("케이뱅크 100149166673");
+                  alert("신랑측 계좌번호가 복사되었습니다.");
+                }}
+                aria-label="계좌번호 복사"
+              >
+                복사
+              </button>
+            </span>
+            <br />
+            예금주 : 김성윤
+          </p>
         </div>
       )}
 
@@ -54,19 +74,22 @@ function AccountSection() {
         <div className="account-box fade-account">
           <p className="account-role">신부측 계좌</p>
           <p className="account-info">
-            <strong>국민은행 987-654321-00-002</strong><br />
-            예금주 : 이순신
+            <span className="account-row">
+              <strong>케이뱅크 100118753818</strong>
+              <button
+                className="copy-btn-mini"
+                onClick={() => {
+                  navigator.clipboard.writeText("케이뱅크 100118753818");
+                  alert("신부측 계좌번호가 복사되었습니다.");
+                }}
+                aria-label="계좌번호 복사"
+              >
+                복사
+              </button>
+            </span>
+            <br />
+            예금주 : 박대희
           </p>
-
-          <button
-            className="copy-btn"
-            onClick={() => {
-              navigator.clipboard.writeText("국민은행 987-654321-00-002");
-              alert("신부측 계좌번호가 복사되었습니다.");
-            }}
-          >
-            복사하기
-          </button>
         </div>
       )}
     </section>
