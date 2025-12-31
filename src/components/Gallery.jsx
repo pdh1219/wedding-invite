@@ -49,36 +49,18 @@ const Gallery = () => {
 
   // ✅ 모달 열림 + 이미지 변경 시 항상 "선택된 썸네일 기준"으로 이동
   useEffect(() => {
-    if (
-      modalIndex === null ||
-      !thumbnailRefs.current[modalIndex] ||
-      !thumbnailsContainerRef.current
-    )
-      return;
+    if (modalIndex !== null) {
+      // 🔒 모달 열릴 때 배경 스크롤 잠금
+      document.body.style.overflow = "hidden";
+    } else {
+      // 🔓 모달 닫힐 때 원래대로
+      document.body.style.overflow = "";
+    }
 
-    const container = thumbnailsContainerRef.current;
-    const thumbnail = thumbnailRefs.current[modalIndex];
-
-    // ⭐ 렌더 & 레이아웃 완료 후 실행
-    requestAnimationFrame(() => {
-      const containerWidth = container.clientWidth;
-      const scrollWidth = container.scrollWidth;
-
-      const thumbnailCenter =
-        thumbnail.offsetLeft + thumbnail.offsetWidth / 2;
-
-      let targetScroll =
-        thumbnailCenter - containerWidth / 2;
-
-      // ✅ 스크롤 범위 보정 (첫/마지막 이미지 대응)
-      const maxScroll = scrollWidth - containerWidth;
-      targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
-
-      container.scrollTo({
-        left: targetScroll,
-        behavior: "smooth",
-      });
-    });
+    // ✅ 컴포넌트 언마운트 대비
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [modalIndex]);
 
   return (
