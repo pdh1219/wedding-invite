@@ -598,19 +598,33 @@ body {
 
 .modal-close-btn {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 1.5rem;
-  background: #7f7f7f;
-  color: var(--accent);
+  top: 15%;
+  right: 15%;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;          /* ✅ 완전한 원 */
+
+  font-size: 30%;
+  line-height: 1;
+
+  background: rgba(127, 127, 127, 0.6); /* ✅ 반투명 */
+  color: #ffffff7c;
+
   border: none;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  backdrop-filter: blur(4px);  /* 은은한 유리 느낌 (지원 브라우저에서만) */
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.modal-close-btn:hover {
+  background: rgba(127, 127, 127, 0.85);
+  transform: scale(1.05);
 }
 
 .modal-prev-btn,
@@ -618,37 +632,77 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 5%;           /* 폭 절반으로 줄임 */
-  height: 7%;          /* 길이 짧게 */
-  background: #7f7f7f;
+
+  width: 20px;
+  height: 150px;
+
+  background: rgba(127, 127, 127, 0.45); /* ✅ 반투명 */
   border: none;
-  border-radius: 12px;   /* 둥글게 */
+  border-radius: 10%;
+
   cursor: pointer;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
-  color: var(--accent);
+
+  font-size: 10px;
+  color: #ffffff7c;
+
+  backdrop-filter: blur(4px);
+  transition: background 0.25s ease, transform 0.15s ease;
 }
 
-.modal-prev-btn { left: calc(50% - 45%); }  /* 이미지 바로 옆으로 이동 */
-.modal-next-btn { right: calc(50% - 45%); } /* 이미지 바로 옆으로 이동 */
+.modal-prev-btn:hover,
+.modal-next-btn:hover {
+  background: rgba(127, 127, 127, 0.75);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.modal-prev-btn { left: 30px; }
+.modal-next-btn { right: 30px; }
 
 .modal-thumbnails {
   display: flex;
+  margin-top: 14px;
+  padding: 10px 10px 3px 10px;
+  width: 90%;
   overflow-x: auto;
-  margin-top: 10px;
-  padding-bottom: 10px;
+  scroll-behavior: smooth;
+  background: rgba(0,0,0,0.25);
+  border-radius: 10px;
+
+  /* 🔥 중요 */
+  justify-content: unset;      /* 제거 */
+  scroll-snap-type: x mandatory;
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .thumbnail {
   width: 60px;
   height: 60px;
   object-fit: cover;
-  margin-right: 8px;
   cursor: pointer;
+
   border-radius: 5px;
   opacity: 0.7;
+
+  /* ❌ 제거 */
+  margin-right: 0;
+
+  /* ✅ 스크롤 중앙 고정 */
+  scroll-snap-align: center;
+  flex-shrink: 0;
 }
 
 .thumbnail.active {
