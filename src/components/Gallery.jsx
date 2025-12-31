@@ -26,13 +26,11 @@ const images = [
 const Gallery = () => {
   const [modalIndex, setModalIndex] = useState(null);
 
+  // 썸네일 ref
   const thumbnailRefs = useRef([]);
   const thumbnailsContainerRef = useRef(null);
 
-  const openModal = () => {
-    setModalIndex(0); // 처음 선택할 이미지
-  };
-
+  const openModal = () => setModalIndex(0);
   const closeModal = () => setModalIndex(null);
 
   const prevImage = () => {
@@ -47,26 +45,35 @@ const Gallery = () => {
     );
   };
 
-  // ✅ 모달 열림 + 이미지 변경 시 항상 "선택된 썸네일 기준"으로 이동
+  // ✅ 선택된 썸네일을 가운데로 이동
   useEffect(() => {
-    if (modalIndex !== null) {
-      // 🔒 모달 열릴 때 배경 스크롤 잠금
-      document.body.style.overflow = "hidden";
-    } else {
-      // 🔓 모달 닫힐 때 원래대로
-      document.body.style.overflow = "";
-    }
+    if (
+      modalIndex !== null &&
+      thumbnailRefs.current[modalIndex] &&
+      thumbnailsContainerRef.current
+    ) {
+      const container = thumbnailsContainerRef.current;
+      const thumbnail = thumbnailRefs.current[modalIndex];
 
-    // ✅ 컴포넌트 언마운트 대비
-    return () => {
-      document.body.style.overflow = "";
-    };
+      const containerWidth = container.offsetWidth;
+      const thumbnailLeft = thumbnail.offsetLeft;
+      const thumbnailWidth = thumbnail.offsetWidth;
+
+      const scrollTo =
+        thumbnailLeft - containerWidth / 2 + thumbnailWidth / 2;
+
+      container.scrollTo({
+        left: scrollTo,
+        behavior: "smooth",
+      });
+    }
   }, [modalIndex]);
 
   return (
     <section className="gallery-section">
       <h2 className="gallery-title">Gallery</h2>
 
+      {/* 미리보기 9장 */}
       <div className="gallery-grid">
         {images.slice(0, 9).map((src, idx) => (
           <div key={idx} className="gallery-cell">
@@ -85,6 +92,7 @@ const Gallery = () => {
         상세보기
       </button>
 
+      {/* ✅ Portal로 body에 모달 렌더링 */}
       {modalIndex !== null &&
         createPortal(
           <div className="modal-overlay" onClick={closeModal}>
@@ -92,11 +100,17 @@ const Gallery = () => {
               className="modal-content"
               onClick={(e) => e.stopPropagation()}
             >
-              <button className="modal-close-btn" onClick={closeModal}>
+              <button
+                className="modal-close-btn"
+                onClick={closeModal}
+              >
                 ✕
               </button>
 
-              <button className="modal-prev-btn" onClick={prevImage}>
+              <button
+                className="modal-prev-btn"
+                onClick={prevImage}
+              >
                 ‹
               </button>
 
@@ -106,10 +120,14 @@ const Gallery = () => {
                 className="modal-image"
               />
 
-              <button className="modal-next-btn" onClick={nextImage}>
+              <button
+                className="modal-next-btn"
+                onClick={nextImage}
+              >
                 ›
               </button>
 
+              {/* 하단 썸네일 */}
               <div
                 className="modal-thumbnails"
                 ref={thumbnailsContainerRef}
@@ -119,7 +137,9 @@ const Gallery = () => {
                     key={idx}
                     src={src}
                     alt={`thumb-${idx}`}
-                    ref={(el) => (thumbnailRefs.current[idx] = el)}
+                    ref={(el) =>
+                      (thumbnailRefs.current[idx] = el)
+                    }
                     className={`thumbnail ${
                       modalIndex === idx ? "active" : ""
                     }`}
