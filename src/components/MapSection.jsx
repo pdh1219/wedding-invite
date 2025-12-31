@@ -104,7 +104,7 @@ function MapSection() {
 
         <strong style={{ fontSize: "15px" }}>자가용 이용 시 주차 안내</strong>
         <div>· 'SK 허브블루' 주차 후 셔틀버스 이용 <br />
-        {"\u00A0\u00A0\u00A0"}(SK 허브블루 : 강남구 학동로 342) 
+        {"\u00A0\u00A0"}(SK 허브블루 : 강남구 학동로 342) 
         </div>
         <div>· 예식장 앞 발렛파킹 진행</div>
 
