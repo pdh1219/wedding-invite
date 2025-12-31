@@ -74,9 +74,8 @@ function App() {
       <main className="wrapper" role="main" aria-label="결혼식 청첩장">
 
         <section aria-labelledby="date-title">
-          <h1 className="date-large" id="date-title">02 / 28</h1>
-          <p className="name">성윤 그리고 대희</p>
-          <p className="save-the-date">WEDDING DAY</p>
+          <h1 className="date-large" id="date-title">WEDDING DAY</h1>
+          <p className="name">성윤 <span className="and">그리고</span> 대희</p>
         </section>
 
         <section className="image-box" aria-label="배경 이미지">
@@ -109,7 +108,7 @@ function App() {
               <strong>김성윤</strong>
             </p>
             <p className="family-line">
-              <span>박효영 · 조용호 의 딸</span>
+              <span>박호영 · 조용효 의 딸</span>
               <strong>박대희</strong>
             </p>
           </div>

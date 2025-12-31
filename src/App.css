@@ -6,6 +6,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'MyWeddingFont';
+  src: url('/wedding-invite/fonts/Revillia Personal Use Only.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   --bg: #faf9f6;
   --text-main: #5f5f5f;
@@ -78,21 +85,27 @@ body {
 
 /* ===== Date / Name ===== */
 .date-large {
-  font-family: var(--font-serif);
-  font-size: 4rem;
+  font-family: 'MyWeddingFont', serif;
+  font-size: 50px;
   font-weight: 400;
   letter-spacing: 0.04em;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   line-height: 1;
 }
 
 .name {
   font-family: var(--font-serif);
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   letter-spacing: 0.05em;
-  margin-bottom: 8px;
+  margin-top: 1px;
+  margin-bottom: 10px;
   text-align: center;
+}
+
+.name .and {
+  font-size: 13px; /* 그리고만 작게 */
+  vertical-align: middle;
 }
 
 .save-the-date {
